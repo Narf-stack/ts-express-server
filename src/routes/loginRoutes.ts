@@ -39,5 +39,32 @@ router.post('/login', (req:RequestWithBody, res:Response)=>{
 
 })
 
+router.get('/', (req:RequestWithBody, res:Response)=>{
+    if ( req.session && req.session.loggedIn){
+        res.send(
+            `
+                <div>
+                    <div> Logged In ! </div>
+                    <a href='/logout'>  Logout ! </a>
+                </div>
+            `
+        )
+    } else {
+        res.send(
+            `
+                <div>
+                    <div> Not Logged In ! </div>
+                    <a href='/login'>  Logged In ! </a>
+                </div>
+            `
+        )
+    }
+})
+
+
+router.get('/logout', (req:RequestWithBody, res:Response)=>{
+    req.session = undefined
+    res.redirect('/');
+})
 
 export { router }

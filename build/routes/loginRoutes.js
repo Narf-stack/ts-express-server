@@ -18,3 +18,15 @@ router.post('/login', function (req, res) {
         res.send('Invalid email or password');
     }
 });
+router.get('/', function (req, res) {
+    if (req.session && req.session.loggedIn) {
+        res.send("\n                <div>\n                    <div> Logged In ! </div>\n                    <a href='/logout'>  Logout ! </a>\n                </div>\n            ");
+    }
+    else {
+        res.send("\n                <div>\n                    <div> Not Logged In ! </div>\n                    <a href='/login'>  Logged In ! </a>\n                </div>\n            ");
+    }
+});
+router.get('/logout', function (req, res) {
+    req.session = undefined;
+    res.redirect('/');
+});

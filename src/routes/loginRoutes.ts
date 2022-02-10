@@ -1,9 +1,18 @@
-import {Router, Request, Response} from 'express'
+import {Router, Request, Response, NextFunction} from 'express'
 
 
 interface RequestWithBody extends Request {
     body:{[key:string]: string| undefined}
 
+}
+
+function requireAuth(req:Request, res:Response, next:NextFunction):void{ // middleware function always return nothing
+    if (req.session && req.session.loggedIn) {
+        next();
+        return;
+    }
+    res.status(403)
+    res.send('Not permitted')
 }
 const router = Router()
 
@@ -67,4 +76,13 @@ router.get('/logout', (req:RequestWithBody, res:Response)=>{
     res.redirect('/');
 })
 
+router.get('/protected', requireAuth,(req:RequestWithBody, res:Response)=>{
+    res.send(
+        `
+            <div>
+                <div> Welcome to private space ! </div>
+            </div>
+        `
+    )
+})
 export { router }

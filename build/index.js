@@ -8,7 +8,7 @@ var body_parser_1 = __importDefault(require("body-parser"));
 var cookie_session_1 = __importDefault(require("cookie-session"));
 var AppRouter_1 = require("./AppRouter");
 require("./controllers/LoginController");
-require("./controllers/RootController");
+require("./controllers/RootControllers");
 var app = (0, express_1.default)();
 // app.get('/', (req:Request, res:Response)=>{
 //     res.send(`

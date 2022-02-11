@@ -4,7 +4,7 @@ import bodyParser  from 'body-parser';
 import cookieSession from 'cookie-session';
 import { AppRouter } from './AppRouter';
 import './controllers/LoginController';
-import './controllers/RootController';
+import './controllers/RootControllers';
 const app = express()
 
 // app.get('/', (req:Request, res:Response)=>{

@@ -4,7 +4,7 @@ import bodyParser  from 'body-parser';
 import cookieSession from 'cookie-session';
 import { AppRouter } from './AppRouter';
 import './controllers/LoginController';
-
+import './controllers/RootController';
 const app = express()
 
 // app.get('/', (req:Request, res:Response)=>{
@@ -17,7 +17,6 @@ const app = express()
 // })
 app.use(bodyParser.urlencoded({extended:true})) // attach a body property to the request
 app.use(cookieSession({keys:['zhjz']})) // attach a session property to the request
-app.use(router)
 app.use(AppRouter.getInstance())
 app.listen(3000,()=>{
     console.log('Listenning on 3000')

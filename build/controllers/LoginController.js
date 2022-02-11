@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var routes_1 = require("./decorators/routes");
-// @controller('/')
 var LoginController = /** @class */ (function () {
     function LoginController() {
     }
@@ -23,5 +22,8 @@ var LoginController = /** @class */ (function () {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
     ], LoginController.prototype, "getLogin", null);
+    LoginController = __decorate([
+        controller('/')
+    ], LoginController);
     return LoginController;
 }());

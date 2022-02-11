@@ -2,7 +2,7 @@ import {Router, Request, Response, NextFunction} from 'express'
 import { get } from './decorators/routes'
 
 
-// @controller('/')
+@controller('/')
 class LoginController {
 
     @get('/login')
